@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <style>
+        
+        /* Adicione um estilo inicial para esconder o cursor do texto */
+        header h1::after {
+            content: '|';
+            animation: blink 0.7s infinite alternate;
+        }
+
+        @keyframes blink {
+            to {
+                opacity: 0;
+            }
+        }
+    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Tec Soluções</title>
+    <link rel="stylesheet" href="arquivo.css/style.css"> <!-- Arquivo para estilos CSS -->
+</head>
+<body>
+     <!-- Seção de Menu Flutuante Futurista -->
+     <div class="menu-flutuante">
+        <ul>
+            <li class="logo"><img src="./logoo.png" href="./index.html" alt="logo"></li>
+            <li><a href="./index.html">Início</a></li>
+            <li><a href="./servicos.html">Serviços</a></li>
+            <li><a href="./contatos.html">Contato</a></li>
+            <!-- Adicione mais itens do menu conforme necessário -->
+        </ul>
+    </div>
+
+    <!-- Seção de Destaque -->
+    <section id="destaque">
+        <h1>Bem-vindo à Lucas Tec Soluções</h1>
+        <p>Sua solução completa em tecnologia, computação em nuvem e desenvolvimento web.</p>
+        
+    </section>
+       
+      <hr>  
+    
+    <!-- Seção sobre a LT -->
+    <section class="sobrealt">
+        <article>
+            <h1>O que nos Diferencia</h1>
+            <h6>Na Lucas TEC Soluções, entendemos que a verdadeira inovação ocorre quando expertise técnica se encontra com uma abordagem estratégica. Oferecemos mais do que simplesmente serviços digitais; oferecemos soluções integradas que impulsionam os objetivos de TI de sua empresa.</h6>
+            <p>Na Lucas TEC Soluções, acreditamos que o futuro digital é moldado por aqueles que buscam constantemente a inovação. Junte-se a nós nessa jornada, onde transformamos desafios em oportunidades e elevamos sua presença digital para patamares inexplorados.</p>
+        </article>
+        <div id="imgtec"><img src="https://i.pinimg.com/236x/57/3a/25/573a2599fb31c2c4eec8ba8cc5dfef25.jpg" alt="future.png"></div>
+        <article>
+            <h1>O que Oferecemos</h1>
+            <table>
+                <tr>
+                    <td>
+                        <h3>Inovação Tecnológica</h3>
+                        <p>Mantemo-nos na vanguarda das últimas tendências, garantindo que sua empresa esteja equipada com tecnologias de ponta.</p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <h3>Gestão Eficiente</h3>
+                        <p>Desenvolvemos estratégias de gestão tecnológica personalizadas para otimizar processos e impulsionar a eficiência operacional.</p>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        <h3>Resultados Mensuráveis</h3>
+                        <p>Comprometemo-nos a entregar resultados tangíveis, alinhados com seus objetivos de negócios.</p>
+                    </td>
+                </tr>
+            </table>
+        </article>
+    </section>
+    <hr>
+    <!-- Cabeçalho com efeito de digitação -->
+    <header>
+        <h1 id="blog-title">Blog da Lucas Tec Soluções</h1>
+    </header>
+
+    <!-- Seção de Posts e Comentários (seu conteúdo existente) -->
+
+    <script>
+        // Seu JavaScript aqui...
+        const titleElement = document.getElementById('blog-title');
+        const text = 'Blog da Lucas Tec Soluções'; // Texto para o efeito de digitação
+        let index = 0;
+
+        function typeEffect() {
+            titleElement.textContent = text.slice(0, index);
+            index++;
+
+            if (index > text.length) {
+                index = 0;
+            }
+
+            setTimeout(typeEffect, 150); // Ajuste a velocidade da digitação conforme necessário
+        }
+
+        // Inicie o efeito de digitação quando a página carregar
+        window.onload = function () {
+            typeEffect();
+        };
+    </script>
+        <!-- Seção de Posts -->
+        <section id="posts" class="post-section">
+            <button id="btnCreatePost">Criar Nova Postagem</button>
+        </section>
+    
+        <script>
+            document.getElementById('btnCreatePost').addEventListener('click', function() {
+                createPost();
+            });
+    
+            function createPost() {
+                // Simulação de dados para uma nova postagem
+                const newPost = {
+                    title: 'Nova Postagem',
+                    author: 'Autor Desconhecido',
+                    content: 'Conteúdo da nova postagem.',
+                    date: getCurrentDate(),
+                };
+    
+                // Criação da estrutura da postagem
+                const postSection = document.getElementById('posts');
+    
+                const article = document.createElement('article');
+                article.classList.add('post');
+    
+                const header = document.createElement('header');
+                const h2 = document.createElement('h2');
+                h2.textContent = newPost.title;
+    
+                const metaInfo = document.createElement('p');
+                metaInfo.classList.add('meta-info');
+                metaInfo.textContent = `Por ${newPost.author} | ${newPost.date}`;
+    
+                header.appendChild(h2);
+                header.appendChild(metaInfo);
+    
+                const content = document.createElement('div');
+                content.classList.add('content');
+    
+                const p1 = document.createElement('p');
+                p1.textContent = newPost.content;
+    
+                content.appendChild(p1);
+    
+                const footer = document.createElement('footer');
+                const metaInfoFooter = document.createElement('p');
+                metaInfoFooter.classList.add('meta-info');
+                metaInfoFooter.textContent = `Publicado em ${newPost.date}`;
+    
+                footer.appendChild(metaInfoFooter);
+    
+                article.appendChild(header);
+                article.appendChild(content);
+                article.appendChild(footer);
+    
+                postSection.appendChild(article);
+            }
+    
+            function getCurrentDate() {
+                const currentDate = new Date();
+                const day = currentDate.getDate();
+                const month = currentDate.getMonth() + 1;
+                const year = currentDate.getFullYear();
+                return `${day} de ${getMonthName(month)}, ${year}`;
+            }
+    
+            function getMonthName(month) {
+                const months = [
+                    'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+                    'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+                ];
+                return months[month - 1];
+            }
+        </script>
+        <!-- Seção de Comentários -->
+        <section id="comentarios" class="comentarios-section">
+            <h2>Comentários</h2>
+            <div class="comentarios">
+                <!-- Área para Comentários -->
+            </div>
+    
+            <!-- Formulário de Comentário -->
+            <div class="comentar">
+                <h3>Deixe seu Comentário</h3>
+                <form id="form-comentario">
+                    <label for="nome">Nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+    
+                    <label for="comentario">Comentário:</label>
+                    <textarea id="comentario" name="comentario" rows="4" required></textarea>
+    
+                    <button type="submit">Comentar</button>
+                </form>
+            </div>
+        </section>
+
+    
+    <article class="textonocentro">
+        <h1>Nossas Especialidades</h1>
+        <h3>Cloud Computing:</h3>
+        <p>Desbloqueamos o poder da nuvem para otimizar suas operações, aumentar a escalabilidade e garantir a segurança dos seus dados.</p>
+    <h3>Desenvolvimento Web:</h3>
+    <p>Desenvolvimento Web:</p>
+    <h3>Consultoria de Qualidade:</h3>
+    <p>Utilizando as melhores práticas em gerenciamento de projetos, oferecemos consultoria personalizada para garantir o sucesso de suas iniciativas digitais.</p>
+    <h3></h3>
+    </article>
+            
+               
+    <!-- Seção de Formulário de Contato -->
+    <section id="formulario-contato">
+        <h2>Entre em Contato</h2>
+        <div id="gif">
+            <img src="https://kirux.files.wordpress.com/2009/06/programmers.gif" alt="Programmers GIF">
+        </div>
+        <form id="form-contato">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" rows="4" required></textarea>
+
+            <button type="button" onclick="enviarMensagem()">Enviar</button>
+        </form>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2023 Lucas Tec Soluções. Todos os direitos reservados.</p>
+    </footer>
+<!-- Adicione este botão no final do seu body -->
+<button id="scrollToTopBtn" onclick="scrollToTop()">Topo</button>
+
+</body>
+</html>
